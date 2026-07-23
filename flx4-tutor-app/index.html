@@ -865,6 +865,76 @@
     .studio-hud .seg.hide-sm { display: none; }
     #lesson-notes-panel, #tools-drawer.is-drawer-panel { bottom: 38px; max-height: 60vh; }
   }
+
+  /* Portfolio embed skin: the runtime remains the repo's real lesson/MIDI
+     engine, but its visual shell belongs to the D.R.C.A. portfolio. */
+  :root {
+    --stage: #080808;
+    --stage-2: #0d0d0d;
+    --panel: #101010;
+    --panel-2: #171717;
+    --panel-3: #242424;
+    --edge: rgba(255, 255, 255, 0.12);
+    --edge-hi: rgba(255, 255, 255, 0.24);
+    --ink: #ededed;
+    --ink-dim: #969696;
+    --ink-faint: #666;
+    --live: #d7d7d7;
+    --d1: #d8dde5;
+    --d2: #aeb4bf;
+    --ok: #c8d5cd;
+    --warn: #d5c4a5;
+    --bad: #d69b9b;
+    --focus: #f1f1f1;
+    --blue: var(--focus);
+    --orange: var(--live);
+    --green: var(--ok);
+    --danger: var(--bad);
+    --font-display: "Times New Roman", serif;
+    --font-body: Arial, sans-serif;
+    --font-mono: Consolas, "Cascadia Mono", ui-monospace, monospace;
+  }
+  html, body { background: #080808; }
+  body { color: var(--ink); font-family: var(--font-body); }
+  .app-bar { min-height: 58px; padding: 14px 0; border-bottom: 0; background: #080808; backdrop-filter: none; }
+  .brand { gap: 10px; }
+  .brand strong { font-family: var(--font-display); font-size: 1.05rem; letter-spacing: .06em; text-transform: uppercase; }
+  .brand span { color: var(--ink-faint); font: 10px/1 var(--font-mono); text-transform: uppercase; }
+  .app-actions { gap: 12px; }
+  .midi-status { max-width: 34vw; color: var(--ink-faint); font: 10px/1.2 var(--font-mono); text-transform: uppercase; }
+  .midi-status::before { width: 6px; height: 6px; margin-right: 6px; }
+  .view-tabs { gap: 16px; margin-left: 10px; }
+  .view-tab, .top-button, .button { border: 0; border-radius: 0; color: var(--ink-dim); background: transparent; font: 10px/1 var(--font-mono); letter-spacing: .05em; text-transform: uppercase; }
+  .view-tab { padding: 8px 0; }
+  .view-tab:hover, .view-tab[aria-current="page"], .top-button:hover, .button:hover { color: var(--ink); background: transparent; }
+  .view-tab[aria-current="page"] { border-bottom: 1px solid var(--ink); }
+  .top-button, .button { padding: 8px 0; }
+  .button.primary { color: var(--ink); background: transparent; border-bottom: 1px solid var(--ink); }
+  main { padding: 0; }
+  .lesson-frame { grid-template-columns: 1fr; max-width: none; margin: 0 0 18px; padding: 18px 0 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
+  .lesson-frame::before { display: none; }
+  .lesson-frame .deck-workspace { order: -1; width: 100%; margin-bottom: 28px; }
+  .deck-canvas { width: 94%; max-width: 94%; border-radius: 0; }
+  .deck-art { width: 100%; max-width: 100%; max-height: none; filter: invert(1) grayscale(1) contrast(1.5) brightness(.92); opacity: .94; }
+  .deck-canvas::after { background: radial-gradient(ellipse at center, transparent 46%, rgba(0, 0, 0, .32) 100%); }
+  .lesson-header { max-width: 900px; width: 100%; margin: 0 auto; padding: 0 18px 18px; }
+  .lesson-step, .drca-copy-index, .studio-hud, .lesson-instruction, .lesson-placeholder-warning, .timing-status, .timing-hear { color: var(--ink-faint); font-family: var(--font-mono); text-transform: uppercase; }
+  .lesson-title { font-family: var(--font-display); font-weight: 400; letter-spacing: -.04em; }
+  .lesson-intro { color: var(--ink-dim); }
+  .lesson-actions { gap: 18px; }
+  .studio-hud { padding: 10px 0; border-top: 1px solid var(--edge); border-bottom: 0; }
+  .practice-session { max-width: none; margin: 0; padding: 16px 0 40px; border: 0; border-top: 1px solid var(--edge); border-radius: 0; background: transparent; box-shadow: none; }
+  .session-deck, .session-master { border-color: var(--edge); border-radius: 0; background: #0d0d0d; }
+  .drawer-bar { background: #080808; border-color: var(--edge); }
+  .module-hub, #tools-drawer.is-drawer-panel, #lesson-notes-panel { border-color: var(--edge); border-radius: 0; background: #0d0d0d; }
+  .module-card, .continue-panel, .genre-locked, .hw-latest, .hw-jog-telemetry { border-radius: 0; background: #101010; }
+  @media (max-width: 700px) {
+    .app-bar { align-items: flex-start; flex-wrap: wrap; }
+    .app-actions { width: 100%; justify-content: space-between; }
+    .midi-status { max-width: 56vw; }
+    .deck-canvas { width: 100%; max-width: 100%; }
+    .lesson-header { padding-left: 0; padding-right: 0; }
+  }
 </style>
 </head>
 <body>
