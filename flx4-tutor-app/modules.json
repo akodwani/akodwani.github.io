@@ -1,0 +1,150 @@
+{
+  "comment": "Creative Mix Studio module schema. Each module is data, not code: the module hub and module runtime (index.html) render whatever is defined here. 'stages' for the three creative modules are pre-authored per the Creative Mix Studio spec so Cycle 2 can wire live scoring against them without a schema change. 'interactive' marks whether stage advancement is currently driven live by the app (false = metadata/preview only, still Cycle 1). hardwareVerification.notes is computed by cross-checking requiredControls against control-map.json placeholder flags — it must never claim physical verification that has not happened.",
+  "modules": [
+    {
+      "id": "foundations",
+      "type": "guided",
+      "interactive": false,
+      "title": "Foundations",
+      "description": "A quick review of the core moves you already learned in the main curriculum: play, cue, EQ, channel fader, and crossfader. Use this before a creative module if you want a refresher.",
+      "difficulty": "beginner",
+      "estimatedDuration": "5-10 min",
+      "concepts": ["transport control", "cueing", "3-band EQ", "channel level vs. crossfader"],
+      "requiredControls": ["deck1-play", "deck1-cue", "eq1-high", "eq1-mid", "eq1-low", "channel1-fader", "crossfader"],
+      "hardwareVerification": {
+        "notes": "Uses a mix of specification-informed defaults (deck1-play, deck1-cue, eq1-high/mid/low, crossfader) and one placeholder address (channel1-fader) pending physical calibration. No control here has been physically verified on a real DDJ-FLX4 in this repository."
+      },
+      "stages": [
+        { "id": "review-transport", "title": "Transport", "description": "Play and cue Deck 1 to recall how a momentary cue differs from a latching play button." },
+        { "id": "review-eq", "title": "3-band EQ", "description": "Sweep HIGH, MID, and LOW on Channel 1 to hear each band in isolation." },
+        { "id": "review-levels", "title": "Levels vs. crossfader", "description": "Set the channel fader for headroom, then use the crossfader to bring the channel in and out." }
+      ],
+      "completionCriteria": "All three review stages visited at least once.",
+      "scoring": null,
+      "safetyNotes": "This module does not score technique. It exists to orient a returning learner, not to replace the 14-lesson curriculum."
+    },
+    {
+      "id": "house-blend",
+      "type": "guided",
+      "interactive": false,
+      "title": "House Blend",
+      "description": "Teach a gradual, phrase-aligned transition from Deck A to Deck B in the House style: long overlap, careful bass exchange, no jarring cuts.",
+      "difficulty": "intermediate",
+      "estimatedDuration": "15-20 min",
+      "concepts": ["phrase alignment", "BPM matching", "bass-frequency exchange", "gradual EQ blending", "clean handoff"],
+      "requiredControls": ["deck1-play", "deck2-play", "tempo-left", "tempo-right", "eq1-low", "eq2-low", "eq1-mid", "eq2-mid", "eq1-high", "eq2-high", "channel1-fader", "channel2-fader", "crossfader"],
+      "hardwareVerification": {
+        "notes": "Requires eq2-*, channel1-fader, and channel2-fader, which are all placeholder addresses pending physical calibration. tempo-left/right, eq1-*, and both play controls are specification-informed defaults. No control here has been physically verified on a real DDJ-FLX4 in this repository."
+      },
+      "stages": [
+        { "id": "load-tracks", "title": "Load two tracks", "description": "Load a track on Deck A and a track on Deck B so both decks have usable BPM and beat-grid information." },
+        { "id": "confirm-grid", "title": "Confirm BPM/grid", "description": "Check that both decks show a confident BPM reading before you start the blend." },
+        { "id": "match-bpm", "title": "Bring BPMs within tolerance", "description": "Use the TEMPO faders so Deck A and Deck B are close enough in BPM that a long overlap will not drift audibly." },
+        { "id": "prepare-deck-b", "title": "Prepare Deck B", "description": "Set Deck B's channel fader down and EQ neutral before it's audible in the mix." },
+        { "id": "start-on-phrase", "title": "Start Deck B on the phrase", "description": "Press play for Deck B right on a phrase boundary, not mid-phrase." },
+        { "id": "control-level", "title": "Keep Deck B controlled", "description": "Bring Deck B's channel level up gradually; do not jump it straight to full." },
+        { "id": "introduce-highs", "title": "Introduce mids and highs", "description": "Bring in Deck B's MID and HIGH EQ gradually while Deck A still carries the low end." },
+        { "id": "bass-exchange", "title": "Bass exchange", "description": "Deliberately hand the low end from Deck A to Deck B — do not run both basslines at once for long." },
+        { "id": "complete-handoff", "title": "Complete the handoff", "description": "Remove Deck A cleanly once Deck B is fully in, with no leftover audible bleed." },
+        { "id": "result", "title": "Result", "description": "Review your phrase timing, BPM difference, low-end overlap, transition duration, and clipping." }
+      ],
+      "completionCriteria": "All ten stages completed in order, ending with a result report.",
+      "scoring": {
+        "disclaimer": "Scores measure timing, alignment, and levels only. They do not judge whether the resulting mix is artistically good.",
+        "dimensions": ["phraseTiming", "bpmDifference", "lowFrequencyOverlap", "transitionDuration", "clippingOrExcessiveLevel", "completionOrder"]
+      },
+      "safetyNotes": "Not yet interactive in this build (Cycle 1). Stage list and scoring dimensions are defined here so live coaching can be wired up without changing this schema."
+    },
+    {
+      "id": "edm-drop-transition",
+      "type": "guided",
+      "interactive": false,
+      "title": "EDM Drop Transition",
+      "description": "Teach a decisive, well-timed energy transition into a drop, rather than a long ambiguous overlap.",
+      "difficulty": "intermediate",
+      "estimatedDuration": "12-18 min",
+      "concepts": ["drop/phrase boundaries", "BPM and phrase alignment", "low-end control before a drop", "decisive handoff", "post-transition level stability"],
+      "requiredControls": ["deck1-play", "deck2-play", "tempo-left", "tempo-right", "eq1-low", "eq2-low", "channel1-fader", "channel2-fader", "crossfader"],
+      "hardwareVerification": {
+        "notes": "Requires eq2-low, channel1-fader, and channel2-fader, which are all placeholder addresses pending physical calibration. tempo-left/right, eq1-low, and both play controls are specification-informed defaults. No control here has been physically verified on a real DDJ-FLX4 in this repository."
+      },
+      "stages": [
+        { "id": "prepare-deck-b", "title": "Prepare Deck B at the drop", "description": "Cue Deck B to the intended phrase/drop boundary before you bring it in." },
+        { "id": "align", "title": "Align BPM and phrase", "description": "Match tempo and phrase position so the drop lands where you intend." },
+        { "id": "control-low-end", "title": "Control the outgoing low end", "description": "Pull Deck A's LOW down ahead of the drop so the low end doesn't clash." },
+        { "id": "launch", "title": "Launch Deck B at the boundary", "description": "Start Deck B exactly at the chosen phrase/drop boundary." },
+        { "id": "handoff", "title": "Deliberate handoff", "description": "Cross over decisively — this is not a long blend, it is a clean handoff." },
+        { "id": "stabilize", "title": "Stabilize levels", "description": "Settle Deck B's level and EQ after the transition so nothing clips or sits too hot." },
+        { "id": "result", "title": "Result", "description": "Review your phrase/BPM alignment, low-end control, handoff decisiveness, and post-transition levels." }
+      ],
+      "completionCriteria": "All seven stages completed in order, ending with a result report.",
+      "scoring": {
+        "disclaimer": "Scores measure timing, alignment, and levels only. They do not judge whether the resulting mix is artistically good. No single transition technique is presented as universally correct for all EDM tracks — this module teaches one decisive-transition pattern among several valid approaches.",
+        "dimensions": ["phraseBpmAlignment", "lowEndControlBeforeHandoff", "transitionDecisiveness", "postTransitionLevelStability", "completionOrder"]
+      },
+      "safetyNotes": "Not yet interactive in this build (Cycle 1). Stage list and scoring dimensions are defined here so live coaching can be wired up without changing this schema."
+    },
+    {
+      "id": "bgm-soundtrack-flow",
+      "type": "guided",
+      "interactive": false,
+      "title": "BGM / Soundtrack Flow",
+      "description": "Teach a smooth, unobtrusive continuous mix suitable for background listening — not a composed soundtrack, and not a DAW replacement.",
+      "difficulty": "beginner",
+      "estimatedDuration": "12-18 min",
+      "concepts": ["level balancing", "low-frequency overlap avoidance", "gradual blending", "coherent energy direction", "silence/clipping-free handoff"],
+      "requiredControls": ["deck1-play", "deck2-play", "eq1-low", "eq2-low", "channel1-fader", "channel2-fader", "crossfader"],
+      "hardwareVerification": {
+        "notes": "Requires eq2-low, channel1-fader, and channel2-fader, which are all placeholder addresses pending physical calibration. eq1-low and both play controls are specification-informed defaults. No control here has been physically verified on a real DDJ-FLX4 in this repository."
+      },
+      "stages": [
+        { "id": "load-preview", "title": "Load and preview", "description": "Load two selections and preview each before blending." },
+        { "id": "balance-levels", "title": "Balance levels", "description": "Match perceived loudness between the two selections before starting the blend." },
+        { "id": "avoid-low-clash", "title": "Avoid low-end clash", "description": "Keep simultaneous low-frequency energy from both decks low during the overlap." },
+        { "id": "gradual-blend", "title": "Gradual blend", "description": "Cross the crossfader and levels slowly — this mix should be unnoticeable while it happens." },
+        { "id": "energy-direction", "title": "Coherent energy direction", "description": "Keep the perceived energy moving in one direction rather than lurching." },
+        { "id": "clean-handoff", "title": "Complete the handoff", "description": "Finish with no abrupt silence and no clipping." },
+        { "id": "result", "title": "Result", "description": "Review your level balance, low-end overlap, blend smoothness, and handoff continuity." }
+      ],
+      "completionCriteria": "All seven stages completed in order, ending with a result report.",
+      "scoring": {
+        "disclaimer": "Scores measure timing, alignment, and levels only. They do not judge whether the resulting mix is artistically good. This module creates a continuous DJ mix / background-music sequence — it does not compose a soundtrack and does not replace a DAW.",
+        "dimensions": ["levelBalance", "lowFrequencyOverlap", "blendSmoothness", "clippingOrSilence", "completionOrder"]
+      },
+      "safetyNotes": "Not yet interactive in this build (Cycle 1). Stage list and scoring dimensions are defined here so live coaching can be wired up without changing this schema."
+    },
+    {
+      "id": "hardware-lab",
+      "type": "diagnostic",
+      "interactive": true,
+      "title": "Hardware Lab",
+      "description": "Test your physical controller or the Quick Simulator control-by-control without advancing any curriculum lesson. See exactly what MIDI byte arrived, which virtual control matched it, and whether that control's address is verified, calibrated, placeholder, or unmapped.",
+      "difficulty": "beginner",
+      "estimatedDuration": "open-ended",
+      "concepts": ["MIDI status/data bytes", "hardware mapping confidence", "calibration vs. shipped defaults"],
+      "requiredControls": [],
+      "hardwareVerification": {
+        "notes": "Hardware Lab itself makes no verification claims — it is the tool you use to see the current verification state of every control, live, as messages arrive."
+      },
+      "unsupportedControls": [
+        { "name": "Jog Wheel (Deck 1, Deck 2)", "note": "Touch/scratch, pitch bend, fine loop-point adjust." },
+        { "name": "Loop In / Out, Beat/Auto-Loop, Reloop-Exit", "note": "Per deck." },
+        { "name": "Loop Call ◀ / ▶", "note": "Halve/double loop length, per deck." },
+        { "name": "Beat Sync", "note": "Per deck." },
+        { "name": "Performance Pads (8 per deck)", "note": "Hot Cue, Pad FX, Beat Jump, and Sampler pad modes." },
+        { "name": "Browse encoder + Load buttons", "note": "Deck 1 / Deck 2." },
+        { "name": "Trim/Gain knob", "note": "Per channel, distinct from the EQ knobs already mapped." },
+        { "name": "Headphones: channel CUE, master CUE, MIX, LEVEL", "note": "" },
+        { "name": "Master Level knob", "note": "" },
+        { "name": "Beat FX section", "note": "CH Select, FX Select, Beat divisor, FX level/on." },
+        { "name": "Color FX / CFX knob + Smart CFX button", "note": "Per channel." },
+        { "name": "Smart Fader button", "note": "" },
+        { "name": "Mic Attenuator (ATT.) knob", "note": "" }
+      ],
+      "stages": [],
+      "completionCriteria": null,
+      "scoring": null,
+      "safetyNotes": "Using Simulator Mode in Hardware Lab never upgrades a placeholder mapping to verified. Only a learner-confirmed calibration (Tools -> Controller profile) or documented physical testing changes a control's status."
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "comment": "Ordered curriculum. Tier 1 (Control Mastery, lessons 1-12, wording locked except the 'fader-bring-in' enforcement fix) plus Tier 2 (Timing, section 'Timing'). Each lesson has a stable string 'id' (engine walks by index, but ids survive reordering). CONTROL lessons target a control id from control-map.json; 'hear' is the audible result on completion; 'done' tightens the check ({minValue}/{maxValue}, or {stages:[...]} for an in-order sequence); a lesson may instead define 'steps' (each with its own instruction/control/done, optional 'also' co-spotlight ids); optional 'resetControls' returns listed controls to centre on entry. TIMING lessons set 'type':'timing' with a pre-aligned 'track' {src,deck,bpm,offset} and steps carrying a 'mode': 'tap' (count 'taps' on-beat), 'demo' ('highlight':'bar'|'phrase'), or 'evaluate' (grade the learner's action vs the nearest boundary: 'target':'bar'|'phrase8'|'phrase', 'attempts', 'leadInBeats'; success window is the PHRASE_TIMING_WINDOW_MS constant in index.html). Timing steps have no control id.",
+  "lessons": [
+    {
+      "id": "start-the-music",
+      "title": "Start the music",
+      "instruction": "Press the glowing PLAY button on the left deck.",
+      "control": "deck1-play",
+      "hear": "Your track starts. Press it again — it stops. This is the only button that matters until you know what the others do."
+    },
+    {
+      "id": "set-cue-point",
+      "title": "Set the cue point",
+      "instruction": "With the track paused, press CUE.",
+      "control": "deck1-cue",
+      "hear": "The track jumps back to where you set your cue. Hold CUE to preview from there; release and it snaps back."
+    },
+    {
+      "id": "channel-fader",
+      "title": "The channel fader (your volume)",
+      "instruction": "With the track playing, pull the Channel 1 fader all the way down, then push it back up.",
+      "control": "channel1-fader",
+      "done": { "stages": [{ "maxValue": 5 }, { "minValue": 100 }] },
+      "hear": "Your track disappears and comes back. This fader is the single most important control on the mixer — it decides whether a deck is heard at all."
+    },
+    {
+      "id": "eq-hi",
+      "title": "HI: the crisp stuff",
+      "instruction": "Turn the HI knob on Channel 1 all the way down (counter-clockwise).",
+      "control": "eq1-high",
+      "done": { "maxValue": 5 },
+      "hear": "The hi-hats and cymbals vanish. The track gets dull and muffled. Turn it back to 12 o'clock — they come back."
+    },
+    {
+      "id": "eq-low",
+      "title": "LOW: the kick and bass",
+      "instruction": "Turn the LOW knob on Channel 1 all the way down.",
+      "control": "eq1-low",
+      "done": { "maxValue": 5 },
+      "hear": "The kick drum and bassline drop out. The track gets thin and hollow. This is called \"killing the bass\" — it's the most-used move in all of DJing."
+    },
+    {
+      "id": "eq-mid",
+      "title": "MID: everything else",
+      "instruction": "Turn the MID knob on Channel 1 all the way down.",
+      "control": "eq1-mid",
+      "done": { "maxValue": 5 },
+      "hear": "Vocals and melody hollow out. MIDs are where most of the music actually lives — that's why cutting them sounds so strange."
+    },
+    {
+      "id": "tempo",
+      "title": "Tempo: the speed",
+      "instruction": "Slide the left TEMPO fader up, then down.",
+      "control": "tempo-left",
+      "done": { "stages": [{ "minValue": 110 }, { "maxValue": 17 }] },
+      "hear": "The track speeds up and slows down. Notice the pitch shifts too — that's normal. This fader exists for exactly one reason: making two songs run at the same speed."
+    },
+    {
+      "id": "crossfader",
+      "title": "The crossfader",
+      "instruction": "Slide the crossfader fully left, then fully right.",
+      "control": "crossfader",
+      "done": { "stages": [{ "maxValue": 5 }, { "minValue": 122 }] },
+      "hear": "With only Deck 1 playing, your track vanishes when the crossfader goes right — because the crossfader chooses which deck reaches the speakers."
+    },
+    {
+      "id": "second-deck-play",
+      "title": "Deck 2 is the same deck",
+      "instruction": "Load a track to the right deck and press its PLAY button.",
+      "control": "deck2-play",
+      "hear": "Both tracks playing at once. It sounds like a mess — that's the point. Everything you just learned on the left exists identically on the right."
+    },
+    {
+      "id": "headphone-cue",
+      "title": "Cue: hear it before they do",
+      "instruction": "Pull the Channel 2 fader down, then press the CUE button on Channel 2 and put on headphones.",
+      "steps": [
+        { "instruction": "First, pull the Channel 2 fader all the way down.", "control": "channel2-fader", "done": { "maxValue": 5 } },
+        { "instruction": "Now press the CUE button on Channel 2 and put on headphones.", "control": "channel2-cue" }
+      ],
+      "hear": "Deck 2 in your headphones only. The room still hears Deck 1. This is the DJ's secret: you're listening to the future."
+    },
+    {
+      "id": "fader-bring-in",
+      "title": "Bring it in with the fader",
+      "instruction": "With Deck 2 playing and cued in your headphones, pull the Channel 2 fader all the way down, then slowly raise it to bring the track in.",
+      "control": "channel2-fader",
+      "done": { "stages": [{ "maxValue": 5 }, { "minValue": 110 }] },
+      "hear": "The second track enters the mix. Too loud, too sudden — it clashes. You just did your first (bad) transition. Now we fix it."
+    },
+    {
+      "id": "bass-swap-transition",
+      "title": "Your first real transition (bass swap)",
+      "instruction": "Three moves, in order:",
+      "resetControls": ["eq1-high", "eq1-mid", "eq1-low"],
+      "steps": [
+        { "instruction": "Kill the LOW on Deck 2.", "control": "eq2-low", "done": { "maxValue": 5 } },
+        { "instruction": "Raise the Deck 2 fader all the way.", "control": "channel2-fader", "done": { "minValue": 122 } },
+        { "instruction": "Now slowly turn Deck 1's LOW down as you turn Deck 2's LOW up.", "control": "eq1-low", "also": ["eq2-low"], "done": { "maxValue": 5 } }
+      ],
+      "hear": "The tracks layer without fighting. Two basslines at once is mud — that's why you kill one. As you swap the LOWs, the energy hands off from one track to the other. That's a real DJ transition."
+    },
+    {
+      "id": "hear-the-beat",
+      "section": "Timing",
+      "type": "timing",
+      "title": "Hear the beat",
+      "instruction": "Here's a track whose grid is already lined up for you. Let's learn what those lines mean — by ear.",
+      "track": { "src": "assets/practice/loop-120.wav", "deck": "A", "bpm": 120, "offset": 0 },
+      "resetControls": ["tempo-left"],
+      "steps": [
+        { "mode": "tap", "taps": 8, "instruction": "Tap along to the beat: hit the SPACEBAR (or the big TAP button) each time the playhead crosses a beat line.", "hear": "That steady pulse is the beat — the heartbeat of the track." },
+        { "mode": "demo", "highlight": "bar", "instruction": "Four beats make a BAR. Watch one bar light up as it plays, then press Continue.", "hear": "Bars are how DJs count: \"1, 2, 3, 4\" is one bar." },
+        { "mode": "demo", "highlight": "phrase", "instruction": "Every 32 bars the music changes — that's a PHRASE, marked by the thick red line. Listen for the change as the playhead reaches it. This is where DJs bring in the next track.", "hear": "Beat → bar → phrase. That hierarchy is the map every DJ mixes to." }
+      ],
+      "hear": "You've got the skeleton of every track: beat, bar, phrase. Next, you'll start using it."
+    },
+    {
+      "id": "mix-on-the-phrase",
+      "section": "Timing",
+      "type": "timing",
+      "title": "Mix on the phrase",
+      "instruction": "Now use the grid. As the track reaches the red phrase line, make your move — right on the line.",
+      "track": { "src": "assets/practice/loop-120.wav", "deck": "A", "bpm": 120, "offset": 0 },
+      "resetControls": ["tempo-left", "crossfader"],
+      "steps": [
+        { "mode": "evaluate", "target": "phrase", "attempts": 3, "leadInBeats": 8, "instruction": "Watch the countdown to the red phrase line. On the hit, press MIX (or the spacebar), or slam the crossfader across. I'll tell you how close you were — early, late, or right on.", "hear": "Right on the line is where the next track drops." }
+      ],
+      "hear": "That's the whole game: land your move on the phrase. Tighten that up and you're mixing like a DJ."
+    }
+  ]
+}

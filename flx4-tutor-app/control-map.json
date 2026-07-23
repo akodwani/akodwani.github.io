@@ -1,0 +1,145 @@
+{
+  "comment": "The controller map is the single source of truth for the 17 deck-rendered virtual controls. All addresses below match the official AlphaTheta DDJ-FLX4 MIDI message list (see docs/creative-mix-studio/RESEARCH.md) as of the Hardware Parity cycle, but 'matches the spec' is not the same as 'physically confirmed' -- see Hardware Lab's specification-mapped vs physically-verified distinction. invertVisual marks a continuous control whose MIDI value increases in the opposite physical direction from a standard fader (see tempo-left/right).",
+  "controls": [
+    {
+      "id": "deck1-play",
+      "label": "Deck 1 Play",
+      "kind": "button",
+      "bytes": [144, 11, 127],
+      "match": { "type": 144, "channel": 0, "number": 11 },
+      "pos": { "left": "3.8%", "top": "84%", "width": "4.9%", "height": "8.7%" }
+    },
+    {
+      "id": "deck1-cue",
+      "label": "Deck 1 Cue",
+      "kind": "button",
+      "behavior": "momentary",
+      "bytes": [144, 12, 127],
+      "match": { "type": 144, "channel": 0, "number": 12 },
+      "pos": { "left": "4%", "top": "74.3%", "width": "4.6%", "height": "8.2%" }
+    },
+    {
+      "id": "deck2-play",
+      "label": "Deck 2 Play",
+      "kind": "button",
+      "bytes": [145, 11, 127],
+      "match": { "type": 144, "channel": 1, "number": 11 },
+      "pos": { "left": "66.5%", "top": "84%", "width": "4.9%", "height": "8.7%" }
+    },
+    {
+      "id": "deck2-cue",
+      "label": "Deck 2 Cue",
+      "kind": "button",
+      "behavior": "momentary",
+      "bytes": [145, 12, 127],
+      "match": { "type": 144, "channel": 1, "number": 12 },
+      "pos": { "left": "66.6%", "top": "74.3%", "width": "4.6%", "height": "8.2%" }
+    },
+    {
+      "id": "tempo-left",
+      "label": "Left Tempo",
+      "kind": "vertical-fader",
+      "bytes": [176, 0, 64],
+      "match": { "type": 176, "channel": 0, "number": 0 },
+      "invertVisual": true,
+      "pos": { "left": "28.7%", "top": "66.5%", "width": "3.4%", "height": "25%" }
+    },
+    {
+      "id": "tempo-right",
+      "label": "Right Tempo",
+      "kind": "vertical-fader",
+      "bytes": [177, 0, 64],
+      "match": { "type": 176, "channel": 1, "number": 0 },
+      "invertVisual": true,
+      "pos": { "left": "91.3%", "top": "66.5%", "width": "3.4%", "height": "25%" }
+    },
+    {
+      "id": "eq1-high",
+      "label": "Channel 1 EQ High",
+      "kind": "knob",
+      "bytes": [176, 7, 64],
+      "match": { "type": 176, "channel": 0, "number": 7 },
+      "pos": { "left": "43.6%", "top": "22.5%", "width": "3.9%", "height": "7%" }
+    },
+    {
+      "id": "eq1-mid",
+      "label": "Channel 1 EQ Mid",
+      "kind": "knob",
+      "bytes": [176, 11, 64],
+      "match": { "type": 176, "channel": 0, "number": 11 },
+      "pos": { "left": "43.6%", "top": "31%", "width": "3.9%", "height": "7%" }
+    },
+    {
+      "id": "eq1-low",
+      "label": "Channel 1 EQ Low",
+      "kind": "knob",
+      "bytes": [176, 15, 64],
+      "match": { "type": 176, "channel": 0, "number": 15 },
+      "pos": { "left": "43.6%", "top": "40.2%", "width": "3.9%", "height": "7%" }
+    },
+    {
+      "id": "eq2-high",
+      "label": "Channel 2 EQ High",
+      "kind": "knob",
+      "bytes": [177, 7, 64],
+      "match": { "type": 176, "channel": 1, "number": 7 },
+      "pos": { "left": "51.8%", "top": "22.5%", "width": "3.9%", "height": "7%" }
+    },
+    {
+      "id": "eq2-mid",
+      "label": "Channel 2 EQ Mid",
+      "kind": "knob",
+      "bytes": [177, 11, 64],
+      "match": { "type": 176, "channel": 1, "number": 11 },
+      "pos": { "left": "51.8%", "top": "31%", "width": "3.9%", "height": "7%" }
+    },
+    {
+      "id": "eq2-low",
+      "label": "Channel 2 EQ Low",
+      "kind": "knob",
+      "bytes": [177, 15, 64],
+      "match": { "type": 176, "channel": 1, "number": 15 },
+      "pos": { "left": "51.8%", "top": "40.2%", "width": "3.9%", "height": "7%" }
+    },
+    {
+      "id": "channel1-fader",
+      "label": "Channel 1 Fader",
+      "kind": "vertical-fader",
+      "bytes": [176, 19, 100],
+      "match": { "type": 176, "channel": 0, "number": 19 },
+      "pos": { "left": "43.6%", "top": "67.8%", "width": "4%", "height": "20.3%" }
+    },
+    {
+      "id": "channel2-fader",
+      "label": "Channel 2 Fader",
+      "kind": "vertical-fader",
+      "bytes": [177, 19, 100],
+      "match": { "type": 176, "channel": 1, "number": 19 },
+      "pos": { "left": "51.8%", "top": "67.8%", "width": "4%", "height": "20.3%" }
+    },
+    {
+      "id": "channel1-cue",
+      "label": "Channel 1 Cue",
+      "kind": "button",
+      "bytes": [144, 84, 127],
+      "match": { "type": 144, "channel": 0, "number": 84 },
+      "pos": { "left": "43.7%", "top": "59.9%", "width": "3.8%", "height": "3.3%" }
+    },
+    {
+      "id": "channel2-cue",
+      "label": "Channel 2 Cue",
+      "kind": "button",
+      "bytes": [145, 84, 127],
+      "match": { "type": 144, "channel": 1, "number": 84 },
+      "pos": { "left": "51.9%", "top": "59.9%", "width": "3.8%", "height": "3.3%" }
+    },
+    {
+      "id": "crossfader",
+      "label": "Crossfader",
+      "kind": "horizontal-fader",
+      "bytes": [182, 31, 64],
+      "match": { "type": 176, "channel": 6, "number": 31 },
+      "pos": { "left": "45.2%", "top": "90%", "width": "9%", "height": "5.6%" }
+    }
+  ]
+}
