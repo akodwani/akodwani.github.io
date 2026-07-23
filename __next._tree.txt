@@ -1,3 +1,3 @@
-:HL["/_next/static/chunks/159fohit_rt7v.css","style"]
+:HL["/_next/static/chunks/0qcpf~dnct75g.css","style"]
 :HL["/images/tiger-reference.jpg","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"oI9PfO13Rh5oJq1mTkeWL"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"W6cwnUm5v2Qmxm-gQSzTj"}
