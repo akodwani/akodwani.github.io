@@ -44,7 +44,7 @@
 
   // Validates and normalizes a saved/imported physical-verification set: the
   // record of which controls the owner has personally confirmed against a
-  // real DDJ-FLX4 during the "Verify entire controller" sweep. Same shape
+  // real DJ deck during the "Verify entire controller" sweep. Same shape
   // discipline as sanitizeProfileMappings, so a corrupted or hand-edited
   // profile file can never claim physical verification through the JSON
   // import path -- only the sweep's own confirmation step writes this.
@@ -77,10 +77,10 @@
   }
 
   function controlInstruction(control) {
-    if (control.kind === "button") return "Press " + control.label + " once on your physical FLX4.";
-    if (control.kind === "knob") return "Turn " + control.label + " on your physical FLX4.";
-    if (control.kind === "horizontal-fader") return "Move the " + control.label + " left or right on your physical FLX4.";
-    return "Move " + control.label + " through part of its range on your physical FLX4.";
+    if (control.kind === "button") return "Press " + control.label + " once on your physical DJ deck.";
+    if (control.kind === "knob") return "Turn " + control.label + " on your physical DJ deck.";
+    if (control.kind === "horizontal-fader") return "Move the " + control.label + " left or right on your physical DJ deck.";
+    return "Move " + control.label + " through part of its range on your physical DJ deck.";
   }
 
   // Persists the whole profile store under the given storage key. Returns
@@ -152,7 +152,7 @@
     return file.text().then((text) => {
       const payload = JSON.parse(text);
       const profile = payload.profile || payload;
-      if (!profile?.name || !profile?.mappings || typeof profile.mappings !== "object") throw new Error("That file is not an FLX4 Tutor profile.");
+      if (!profile?.name || !profile?.mappings || typeof profile.mappings !== "object") throw new Error("That file is not an DJ Tutor profile.");
       const mappings = sanitizeProfileMappings(profile.mappings, defaultControls);
       const verified = sanitizeVerifiedEntries(profile.verified, defaultControls);
       let name = profile.name;

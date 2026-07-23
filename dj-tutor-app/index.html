@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FLX4 Tutor</title>
+  <title>DJ Tutor</title>
 <style>
   :root {
     /* ---- Design-system tokens (docs/design-system.md) ----------------
@@ -316,7 +316,7 @@
   .deck-control.flash-cw { border-color: var(--blue); box-shadow: 0 0 0 4px rgba(73, 165, 255, 0.4), 0 0 26px 10px rgba(73, 165, 255, 0.35); }
   .deck-control.flash-ccw { border-color: var(--green); box-shadow: 0 0 0 4px rgba(53, 227, 139, 0.4), 0 0 26px 10px rgba(53, 227, 139, 0.35); }
   /* Virtual Deck Replica Repair: every .virtual-* body below is transparent
-     by default (no fill, no border, no shadow) -- the photographed FLX4
+     by default (no fill, no border, no shadow) -- the photographed DJ deck
      image is the only complete artwork. These elements paint ONLY state
      feedback (glow/illumination/position), and only while that state is
      true, per CLAUDE.md's "one image, transparent hotspots" rule. */
@@ -939,7 +939,7 @@
 </head>
 <body>
 <header class="app-bar">
-  <div class="brand"><strong>FLX4 TUTOR</strong><span>Learn the FLX4</span></div>
+  <div class="brand"><strong>DJ TUTOR</strong><span>Learn the DJ deck</span></div>
   <nav class="view-tabs" aria-label="Views">
     <button type="button" class="view-tab" id="view-tab-home" data-app-view-tab="home" aria-current="page">Home</button>
     <button type="button" class="view-tab" id="view-tab-studio" data-app-view-tab="studio" aria-current="false">Practice Studio</button>
@@ -1048,11 +1048,11 @@
             <p class="hw-hint">Advanced / developer information for troubleshooting your controller.</p>
             <details class="hw-help">
               <summary>What do the status badges mean?</summary>
-              <p class="module-disclaimer">Spec-mapped means the address matches the official AlphaTheta DDJ-FLX4 MIDI list, not that it has been tested on real hardware. Physically verified (green) is only set by completing "Verify entire controller" on the real device and confirming each control yourself -- Simulator Mode can never set it. Recognized - pending means a real message is matched but no musical behavior is wired up yet. Unsupported means this app's audio architecture cannot drive that control at all (for example, no microphone input path exists).</p>
+      <p class="module-disclaimer">Spec-mapped means the address matches the documented DJ deck MIDI list, not that it has been tested on real hardware. Physically verified (green) is only set by completing "Verify entire controller" on the real device and confirming each control yourself -- Simulator Mode can never set it. Recognized - pending means a real message is matched but no musical behavior is wired up yet. Unsupported means this app's audio architecture cannot drive that control at all (for example, no microphone input path exists).</p>
             </details>
             <h3>Latest normalized action</h3>
             <div id="hw-latest" class="hw-latest">
-              <p class="empty">No MIDI action yet. Use a control, the Quick Simulator, or your physical FLX4.</p>
+              <p class="empty">No MIDI action yet. Use a control, the Quick Simulator, or your physical DJ deck.</p>
             </div>
             <h3>Jog wheels</h3>
             <div id="hw-jog-telemetry" class="hw-jog-telemetry">
@@ -1074,9 +1074,9 @@
       </div>
     </div>
 
-    <div class="deck-workspace" aria-label="Virtual Pioneer DDJ-FLX4 controller">
+    <div class="deck-workspace" aria-label="Virtual DJ deck">
       <div id="deck-canvas" class="deck-canvas">
-        <img class="deck-art" src="images/flx4.png" alt="Top-down DDJ-FLX4 controller layout">
+      <img class="deck-art" src="images/flx4.png" alt="Top-down DJ deck layout">
         <span class="deck-badge b1" aria-hidden="true">Deck 1</span>
         <span class="deck-badge b2" aria-hidden="true">Deck 2</span>
         <div id="mixer-readout" class="mixer-readout" aria-hidden="true"></div>
@@ -1183,7 +1183,7 @@
   </section>
   <section class="tools-section">
     <div class="drawer-head"><h3 style="margin: 0;">Live MIDI log</h3><button type="button" id="clear-log" class="button ghost">Clear</button></div>
-    <div id="log" class="log" aria-live="polite"><div class="empty">No messages yet. Use the virtual deck, quick simulator, or your FLX4.</div></div>
+  <div id="log" class="log" aria-live="polite"><div class="empty">No messages yet. Use the virtual deck, quick simulator, or your DJ deck.</div></div>
   </section>
 </aside>
 
@@ -1204,7 +1204,7 @@
 <script>
 "use strict";
 
-// FLX4 Tutor has one event path. Real deck input, quick simulator buttons,
+// DJ Tutor has one event path. Real deck input, quick simulator buttons,
 // calibration, and direct virtual controls all call handleMidiMessage().
 let controls = [];
 let defaultControls = [];
@@ -1307,7 +1307,7 @@ function defaultValue(control) { return isContinuous(control) ? 64 : 0; }
 // diagnostics rows, the sweep, the learner-facing labels) reads through this.
 // Precedence (highest wins):
 //   1. physically-verified - the owner confirmed this exact address on a
-//      real DDJ-FLX4 through the verification sweep. Never set by Simulator
+//      real DJ deck through the verification sweep. Never set by Simulator
 //      Mode, and never by importing a profile file (see
 //      sanitizeVerifiedEntries in profile-calibration.js).
 //   2. calibrated - the learner remapped this address themselves via the
@@ -1356,7 +1356,7 @@ const { normalizeMidiValue, decodeType, decodeRelative } = window.FLX4MidiCodec;
 // below reads exactly as it did before the extraction.
 const { sanitizeProfileMappings, sanitizeVerifiedEntries, mappingConflicts, controlInstruction } = window.FLX4Calibration;
 
-// hardware-map.json covers every other documented DDJ-FLX4 input beyond the
+// hardware-map.json covers every other documented DJ deck input beyond the
 // 17 deck-rendered controls above (jog wheels, loop, browse, pads, FX,
 // master section). Populated at startup; performance-pad entries are
 // generated at runtime from hardwareMap.padFormula rather than hand-listed
@@ -1476,7 +1476,7 @@ function getHardwareEntry(id) {
 
 // Every hardware-map hotspot (and physical pad) renders through this same
 // buildControlVisual()/CSS-class system as the 17 core controls -- one
-// visual language for every recognized DDJ-FLX4 input, not a second parallel
+// visual language for every recognized DJ deck input, not a second parallel
 // one. Only entries with a calibrated pos get a deck hotspot; everything
 // else stays Diagnostics-only (see hardware-map.json's top-level comment).
 function buildHardwareOverlay() {
@@ -2785,7 +2785,7 @@ function renderLesson() {
   } else if (lessonState.phase === "exited") {
     lessonEls.step.textContent = "Free play";
     lessonEls.title.textContent = "Exploring on your own";
-    lessonEls.instruction.textContent = "Drag or press any virtual control, or use your physical FLX4. Nothing is being checked right now.";
+    lessonEls.instruction.textContent = "Drag or press any virtual control, or use your physical DJ deck. Nothing is being checked right now.";
     lessonEls.start.textContent = "Resume lesson";
     lessonEls.start.hidden = false;
   } else if ((lessonState.phase === "active" || lessonState.phase === "done") && current.type === "timing") {
@@ -2813,7 +2813,7 @@ function renderLesson() {
       if (unverified.length) {
         lessonEls.placeholderWarning.hidden = false;
         lessonEls.placeholderWarning.textContent = "Heads up: " + unverified.map((control) => control.label).join(" and ")
-          + (unverified.length > 1 ? " use" : " uses") + " a placeholder MIDI address, not yet confirmed on a physical FLX4. "
+      + (unverified.length > 1 ? " use" : " uses") + " a placeholder MIDI address, not yet confirmed on a physical DJ deck. "
           + "If it doesn't respond, check Tools -> Controller profile.";
       }
     }
@@ -3564,7 +3564,7 @@ function flashHwGroupRow(diagnostic) {
 function renderLatestAction(diagnostic) {
   const el = document.getElementById("hw-latest");
   if (!diagnostic) {
-    el.innerHTML = '<p class="empty">No MIDI action yet. Use a control, the Quick Simulator, or your physical FLX4.</p>';
+  el.innerHTML = '<p class="empty">No MIDI action yet. Use a control, the Quick Simulator, or your physical DJ deck.</p>';
     return;
   }
   el.innerHTML = "";
@@ -3716,7 +3716,7 @@ function renderSweep() {
   if (sweepState.phase === "waiting") {
     const waiting = document.createElement("p");
     waiting.className = "hw-sweep-capture";
-    waiting.textContent = "Waiting for physical input on your real DDJ-FLX4...";
+    waiting.textContent = "Waiting for physical input on your real DJ deck...";
     card.appendChild(waiting);
     if (sweepState.mismatch) {
       const warn = document.createElement("p");
@@ -3851,7 +3851,7 @@ function loadProfiles() {
     // Storage can be disabled by the browser. The app will still calibrate for
     // this page session, but export is available as a manual backup.
   }
-  const profile = emptyProfile("My FLX4");
+  const profile = emptyProfile("My DJ deck");
   return { version: 1, activeProfile: profile.name, profiles: { [profile.name]: profile } };
 }
 
@@ -3968,7 +3968,7 @@ function captureCalibration(status, number, value) {
 }
 
 function createProfile() {
-  const requestedName = window.prompt("Name this controller profile:", "My FLX4");
+    const requestedName = window.prompt("Name this controller profile:", "My DJ deck");
   const name = requestedName?.trim();
   if (!name) return;
   if (profileStore.profiles[name]) {
@@ -4497,6 +4497,28 @@ Promise.allSettled([
 
 renderLesson();
 startRealMidi();
+
+// When embedded in the portfolio, let the outer page own scrolling. The
+// document grows when Home becomes Practice Studio, so keep the iframe height
+// synchronized with the actual app instead of trapping a second scrollbar.
+function syncEmbeddedFrameHeight() {
+  const frame = window.frameElement;
+  if (!frame) return;
+  const height = Math.max(
+    document.documentElement.scrollHeight,
+    document.body?.scrollHeight || 0,
+    820,
+  );
+  frame.style.height = height + "px";
+}
+
+if (window.frameElement && "ResizeObserver" in window) {
+  const embeddedHeightObserver = new ResizeObserver(syncEmbeddedFrameHeight);
+  embeddedHeightObserver.observe(document.documentElement);
+  if (document.body) embeddedHeightObserver.observe(document.body);
+  window.addEventListener("resize", syncEmbeddedFrameHeight);
+  window.setTimeout(syncEmbeddedFrameHeight, 0);
+}
 </script>
 </body>
 </html>

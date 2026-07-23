@@ -1,5 +1,5 @@
 {
-  "comment": "The controller map is the single source of truth for the 17 deck-rendered virtual controls. All addresses below match the official AlphaTheta DDJ-FLX4 MIDI message list (see docs/creative-mix-studio/RESEARCH.md) as of the Hardware Parity cycle, but 'matches the spec' is not the same as 'physically confirmed' -- see Hardware Lab's specification-mapped vs physically-verified distinction. invertVisual marks a continuous control whose MIDI value increases in the opposite physical direction from a standard fader (see tempo-left/right).",
+  "comment": "The controller map is the single source of truth for the 17 deck-rendered virtual controls. All addresses below match the official AlphaTheta DJ deck MIDI message list (see docs/creative-mix-studio/RESEARCH.md) as of the Hardware Parity cycle, but 'matches the spec' is not the same as 'physically confirmed' -- see Hardware Lab's specification-mapped vs physically-verified distinction. invertVisual marks a continuous control whose MIDI value increases in the opposite physical direction from a standard fader (see tempo-left/right).",
   "controls": [
     {
       "id": "deck1-play",

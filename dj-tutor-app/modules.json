@@ -12,7 +12,7 @@
       "concepts": ["transport control", "cueing", "3-band EQ", "channel level vs. crossfader"],
       "requiredControls": ["deck1-play", "deck1-cue", "eq1-high", "eq1-mid", "eq1-low", "channel1-fader", "crossfader"],
       "hardwareVerification": {
-        "notes": "Uses a mix of specification-informed defaults (deck1-play, deck1-cue, eq1-high/mid/low, crossfader) and one placeholder address (channel1-fader) pending physical calibration. No control here has been physically verified on a real DDJ-FLX4 in this repository."
+        "notes": "Uses a mix of specification-informed defaults (deck1-play, deck1-cue, eq1-high/mid/low, crossfader) and one placeholder address (channel1-fader) pending physical calibration. No control here has been physically verified on a real DJ deck in this repository."
       },
       "stages": [
         { "id": "review-transport", "title": "Transport", "description": "Play and cue Deck 1 to recall how a momentary cue differs from a latching play button." },
@@ -34,7 +34,7 @@
       "concepts": ["phrase alignment", "BPM matching", "bass-frequency exchange", "gradual EQ blending", "clean handoff"],
       "requiredControls": ["deck1-play", "deck2-play", "tempo-left", "tempo-right", "eq1-low", "eq2-low", "eq1-mid", "eq2-mid", "eq1-high", "eq2-high", "channel1-fader", "channel2-fader", "crossfader"],
       "hardwareVerification": {
-        "notes": "Requires eq2-*, channel1-fader, and channel2-fader, which are all placeholder addresses pending physical calibration. tempo-left/right, eq1-*, and both play controls are specification-informed defaults. No control here has been physically verified on a real DDJ-FLX4 in this repository."
+        "notes": "Requires eq2-*, channel1-fader, and channel2-fader, which are all placeholder addresses pending physical calibration. tempo-left/right, eq1-*, and both play controls are specification-informed defaults. No control here has been physically verified on a real DJ deck in this repository."
       },
       "stages": [
         { "id": "load-tracks", "title": "Load two tracks", "description": "Load a track on Deck A and a track on Deck B so both decks have usable BPM and beat-grid information." },
@@ -66,7 +66,7 @@
       "concepts": ["drop/phrase boundaries", "BPM and phrase alignment", "low-end control before a drop", "decisive handoff", "post-transition level stability"],
       "requiredControls": ["deck1-play", "deck2-play", "tempo-left", "tempo-right", "eq1-low", "eq2-low", "channel1-fader", "channel2-fader", "crossfader"],
       "hardwareVerification": {
-        "notes": "Requires eq2-low, channel1-fader, and channel2-fader, which are all placeholder addresses pending physical calibration. tempo-left/right, eq1-low, and both play controls are specification-informed defaults. No control here has been physically verified on a real DDJ-FLX4 in this repository."
+        "notes": "Requires eq2-low, channel1-fader, and channel2-fader, which are all placeholder addresses pending physical calibration. tempo-left/right, eq1-low, and both play controls are specification-informed defaults. No control here has been physically verified on a real DJ deck in this repository."
       },
       "stages": [
         { "id": "prepare-deck-b", "title": "Prepare Deck B at the drop", "description": "Cue Deck B to the intended phrase/drop boundary before you bring it in." },
@@ -95,7 +95,7 @@
       "concepts": ["level balancing", "low-frequency overlap avoidance", "gradual blending", "coherent energy direction", "silence/clipping-free handoff"],
       "requiredControls": ["deck1-play", "deck2-play", "eq1-low", "eq2-low", "channel1-fader", "channel2-fader", "crossfader"],
       "hardwareVerification": {
-        "notes": "Requires eq2-low, channel1-fader, and channel2-fader, which are all placeholder addresses pending physical calibration. eq1-low and both play controls are specification-informed defaults. No control here has been physically verified on a real DDJ-FLX4 in this repository."
+        "notes": "Requires eq2-low, channel1-fader, and channel2-fader, which are all placeholder addresses pending physical calibration. eq1-low and both play controls are specification-informed defaults. No control here has been physically verified on a real DJ deck in this repository."
       },
       "stages": [
         { "id": "load-preview", "title": "Load and preview", "description": "Load two selections and preview each before blending." },
