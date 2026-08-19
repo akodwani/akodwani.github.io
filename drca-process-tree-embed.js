@@ -94,7 +94,6 @@
       <dl>
         <div><dt>My role</dt><dd>Concept, brand identity, creative direction, generative production, selection, and sequencing</dd></div>
         <div><dt>Tools</dt><dd>Higgsfield, reference-led image and video generation, Next.js portfolio presentation</dd></div>
-        <div><dt>Collaboration</dt><dd>Self-directed project developed with generative AI tools</dd></div>
         <div><dt>Output</dt><dd>Campaign film</dd></div>
       </dl>
     `;
