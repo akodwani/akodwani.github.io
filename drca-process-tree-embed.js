@@ -12,7 +12,7 @@
       "position:relative",
       "z-index:4",
       "width:100%",
-      "margin:clamp(90px,16vh,200px) 0 0",
+      "margin:clamp(72px,10vh,128px) 0 clamp(90px,14vh,180px)",
       "overflow:hidden",
     ].join(";");
 
@@ -52,7 +52,12 @@
 
     window.addEventListener("resize", resizeFrame, { passive: true });
     section.append(frame);
-    firstProject.append(section);
+    const firstVideo = firstProject.querySelector(".drca-video-card");
+    if (firstVideo) {
+      firstVideo.insertAdjacentElement("afterend", section);
+    } else {
+      firstProject.prepend(section);
+    }
   }
 
   const observer = new MutationObserver(mountTree);
