@@ -1,5 +1,5 @@
-:HL["/_next/static/chunks/0g-2cfio.fdi0.css","style"]
+:HL["/_next/static/chunks/0pah.~3zljtrb.css","style"]
 :HL["/models/chrome-thorn.glb","fetch",{"crossOrigin":"anonymous"}]
 :HL["/images/tiger-reference.jpg","image"]
 :HL["/dj-tutor-app/images/flx4.png","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"cteKYfeiSvFRk0qYOKmPp"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"OgXbynL9IzgotW4Bijk2K"}
